@@ -8,30 +8,30 @@ let nextId = 1;
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔵 API POST /api/invoices - Début de la requête');
+    console.log('[API] POST /api/invoices - Début de la requête');
     
     const body = await request.json();
-    console.log('📥 Body reçu:', JSON.stringify(body, null, 2));
+    console.log('[API] Body reçu:', JSON.stringify(body, null, 2));
     
     const { customer, email, value, description } = body;
 
     // Validation basique
     if (!customer || !email || !value) {
-      console.log('❌ Validation échouée - champs manquants');
+      console.log('[API] Validation échouée - champs manquants');
       return NextResponse.json(
         { error: 'Les champs customer, email et value sont requis' },
         { status: 400 }
       );
     }
 
-    console.log('✅ Validation réussie');
+    console.log('[API] Validation réussie');
     
     // Obtenir le prochain ID en interrogeant la base de données
-    console.log('🔍 Recherche du prochain ID disponible...');
+    console.log('[API] Recherche du prochain ID disponible...');
     const maxIdResult = await db.execute(sql`SELECT COALESCE(MAX(id), 0) + 1 as next_id FROM invoices`);
     const nextAvailableId = maxIdResult.rows[0]?.next_id || 1;
     
-    console.log('🆔 Prochain ID disponible:', nextAvailableId);
+    console.log('[API] Prochain ID disponible:', nextAvailableId);
     
     const insertData = {
       id: Number(nextAvailableId),
@@ -42,13 +42,13 @@ export async function POST(request: NextRequest) {
       status: 'open' as const
     };
     
-    console.log('📊 Données à insérer:', insertData);
+    console.log('[API] Données à insérer:', insertData);
 
     // Insertion dans la base de données
-    console.log('🗃️ Tentative d\'insertion en base...');
+    console.log('[API] Tentative d\'insertion en base...');
     const newInvoice = await db.insert(invoices).values(insertData).returning();
 
-    console.log('✅ Insertion réussie:', JSON.stringify(newInvoice[0], null, 2));
+    console.log('[API] Insertion réussie:', JSON.stringify(newInvoice[0], null, 2));
 
     return NextResponse.json({
       success: true,
@@ -57,12 +57,12 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('💥 Erreur lors de la création de la facture:', error);
+    console.error('[API] Erreur lors de la création de la facture:', error);
     
     // Log détaillé de l'erreur
     if (error instanceof Error) {
-      console.error('📋 Message d\'erreur:', error.message);
-      console.error('📋 Stack trace:', error.stack);
+      console.error('[API] Message d\'erreur:', error.message);
+      console.error('[API] Stack trace:', error.stack);
     }
     
     return NextResponse.json(
@@ -78,12 +78,12 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    console.log('🔵 API GET /api/invoices - Récupération des factures');
+    console.log('[API] GET /api/invoices - Récupération des factures');
     
     // Récupération de toutes les factures
     const allInvoices = await db.select().from(invoices).orderBy(invoices.createdAt);
 
-    console.log(`✅ ${allInvoices.length} factures récupérées`);
+    console.log(`[API] ${allInvoices.length} factures récupérées`);
 
     return NextResponse.json({
       success: true,
@@ -92,7 +92,7 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error('💥 Erreur lors de la récupération des factures:', error);
+    console.error('[API] Erreur lors de la récupération des factures:', error);
     
     return NextResponse.json(
       { 

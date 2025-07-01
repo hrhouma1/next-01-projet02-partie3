@@ -33,7 +33,7 @@ export default async function InvoicesPage() {
               className="bg-blue-500 hover:bg-blue-600"
             >
               <a href="/invoices/new">
-                📄 Nouvelle facture
+                Nouvelle facture
               </a>
             </Button>
             
@@ -42,7 +42,7 @@ export default async function InvoicesPage() {
               variant="outline"
             >
               <a href="/">
-                🏠 Accueil
+                Accueil
               </a>
             </Button>
           </div>
@@ -51,7 +51,7 @@ export default async function InvoicesPage() {
         {error ? (
           <div className="bg-red-50 border border-red-200 rounded-lg p-6">
             <h2 className="text-xl font-semibold text-red-700 mb-2">
-              ❌ Erreur de chargement
+              Erreur de chargement
             </h2>
             <p className="text-red-600">{error}</p>
           </div>
@@ -67,7 +67,7 @@ export default async function InvoicesPage() {
                 </p>
                 <Button asChild>
                   <a href="/invoices/new" className="inline-flex items-center">
-                    📄 Créer ma première facture
+                    Créer ma première facture
                   </a>
                 </Button>
               </div>
@@ -131,7 +131,7 @@ export default async function InvoicesPage() {
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-gray-100 text-gray-800'
                             }`}>
-                              {invoice.status || 'open'}
+                              {invoice.status === 'open' ? 'Ouvert' : invoice.status === 'paid' ? 'Payé' : invoice.status || 'Ouvert'}
                             </span>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

@@ -17,6 +17,7 @@ interface InvoiceForm {
 export default function NewInvoicePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const {
     register,
@@ -28,6 +29,7 @@ export default function NewInvoicePage() {
   const onSubmit = async (data: InvoiceForm) => {
     setIsSubmitting(true);
     setSubmitResult(null);
+    setIsSuccess(false);
 
     try {
       const response = await fetch('/api/invoices', {
@@ -41,13 +43,16 @@ export default function NewInvoicePage() {
       const result = await response.json();
 
       if (result.success) {
-        setSubmitResult('✅ Facture créée avec succès ! ID: ' + result.invoice.id);
+        setSubmitResult('Facture créée avec succès ! ID: ' + result.invoice.id);
+        setIsSuccess(true);
         reset();
       } else {
-        setSubmitResult('❌ Erreur: ' + (result.error || 'Erreur inconnue'));
+        setSubmitResult('Erreur: ' + (result.error || 'Erreur inconnue'));
+        setIsSuccess(false);
       }
     } catch (error) {
-      setSubmitResult('❌ Erreur de connexion au serveur');
+      setSubmitResult('Erreur de connexion au serveur');
+      setIsSuccess(false);
       console.error('Erreur:', error);
     } finally {
       setIsSubmitting(false);
@@ -107,7 +112,7 @@ export default function NewInvoicePage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="value">Montant (€) *</Label>
+              <Label htmlFor="value">Montant ($) *</Label>
               <Input
                 id="value"
                 type="number"
@@ -137,7 +142,7 @@ export default function NewInvoicePage() {
 
             {submitResult && (
               <div className={`p-4 rounded ${
-                submitResult.includes('✅') 
+                isSuccess
                   ? 'bg-green-50 text-green-700 border border-green-200' 
                   : 'bg-red-50 text-red-700 border border-red-200'
               }`}>

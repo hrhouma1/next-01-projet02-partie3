@@ -52,16 +52,16 @@ export default async function TestPage() {
     <main className="min-h-screen p-8 bg-gradient-to-br from-green-50 to-blue-100">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-800 mb-6">
-          Test Drizzle + Xata
+          Test Base de Données
         </h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6">
           {error ? (
             <div className="text-red-600">
-              <h2 className="text-xl font-semibold mb-2">❌ Erreur :</h2>
+              <h2 className="text-xl font-semibold mb-2">Erreur de connexion</h2>
               <p className="font-mono text-sm bg-red-50 p-3 rounded">{error}</p>
               <div className="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-700">
-                <p className="font-semibold">💡 Solution suggérée :</p>
+                <p className="font-semibold">Solution suggérée :</p>
                 <p className="text-sm mt-1">
                   Créez manuellement la table "invoices" dans l'interface web de Xata avec les colonnes : 
                   id, customer, email, value, description, status, created_at
@@ -70,7 +70,7 @@ export default async function TestPage() {
             </div>
           ) : (
             <div className="text-green-600">
-              <h2 className="text-xl font-semibold mb-2">✅ Succès !</h2>
+              <h2 className="text-xl font-semibold mb-2">Connexion réussie</h2>
               <p className="mb-4">{result?.message}</p>
               <div className="font-mono text-sm bg-green-50 p-3 rounded">
                 <pre>{JSON.stringify(result, null, 2)}</pre>
@@ -78,7 +78,7 @@ export default async function TestPage() {
               
               {result?.table_exists && (
                 <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 text-blue-700">
-                  <p className="font-semibold">🎉 Table "invoices" trouvée !</p>
+                  <p className="font-semibold">Table "invoices" trouvée</p>
                   <p className="text-sm mt-1">
                     Nombre de factures : {result.invoice_count}
                   </p>
@@ -93,13 +93,13 @@ export default async function TestPage() {
             href="/" 
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors"
           >
-            ← Retour à l'accueil
+            Retour à l'accueil
           </a>
           <a 
             href="/invoices/new" 
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors"
           >
-            📄 Créer une facture
+            Créer une facture
           </a>
         </div>
       </div>
