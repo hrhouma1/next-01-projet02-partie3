@@ -1,4 +1,4 @@
-# 🏗️ **06_GUIDE PRATIQUE : Construire votre Application de Facturation**
+#  **06_GUIDE PRATIQUE : Construire votre Application de Facturation**
 
 > **Objectif :** Créer de A à Z une application Next.js 15 moderne avec App Router, Drizzle ORM, TailwindCSS et React Hook Form
 
@@ -7,15 +7,15 @@
 ## 📋 **PRÉREQUIS**
 
 Avant de commencer, assurez-vous d'avoir :
-- ✅ **Node.js 20+** installé (requis pour Next.js 15)
-- ✅ **npm ou pnpm** pour la gestion des packages
-- ✅ **Git** pour le versioning
-- ✅ **VSCode** (recommandé) avec extensions TypeScript
-- ✅ **Compte Xata** (base de données PostgreSQL gratuite)
+- **Node.js 20+** installé (requis pour Next.js 15)
+- **npm ou pnpm** pour la gestion des packages
+- **Git** pour le versioning
+- **VSCode** (recommandé) avec extensions TypeScript
+- **Compte Xata** (base de données PostgreSQL gratuite)
 
----
 
-## 🚀 **ÉTAPE 1 : Initialisation du projet Next.js**
+
+# **ÉTAPE 1 : Initialisation du projet Next.js**
 
 ### 1.1 Création du projet
 
@@ -56,9 +56,11 @@ npm run dev
 # Vous devriez voir la page d'accueil Next.js
 ```
 
----
+<br/>
+<br/>
 
-## 📦 **ÉTAPE 2 : Installation des dépendances**
+
+# **ÉTAPE 2 : Installation des dépendances**
 
 ### 2.1 Dépendances principales
 
@@ -94,9 +96,11 @@ npx shadcn-ui@latest add label
 npx shadcn-ui@latest add textarea
 ```
 
----
 
-## 🗄️ **ÉTAPE 3 : Configuration de la base de données**
+<br/>
+<br/>
+
+# **ÉTAPE 3 : Configuration de la base de données**
 
 ### 3.1 Création du compte Xata
 
@@ -148,9 +152,11 @@ Ajoutez dans `package.json` :
 }
 ```
 
----
 
-## 🏗️ **ÉTAPE 4 : Création du schéma de base de données**
+<br/>
+<br/>
+
+# **ÉTAPE 4 : Création du schéma de base de données**
 
 ### 4.1 Créer le dossier db
 
@@ -205,9 +211,11 @@ npm run db:migrate
 npm run db:studio
 ```
 
----
 
-## 🎨 **ÉTAPE 5 : Configuration de l'interface utilisateur**
+<br/>
+<br/>
+
+# **ÉTAPE 5 : Configuration de l'interface utilisateur**
 
 ### 5.1 Mise à jour du layout principal (src/app/layout.tsx)
 
@@ -321,9 +329,12 @@ export default function HomePage() {
 }
 ```
 
----
 
-## 🔧 **ÉTAPE 6 : Création de l'API Backend**
+
+<br/>
+<br/>
+
+# **ÉTAPE 6 : Création de l'API Backend**
 
 ### 6.1 Créer le dossier API
 
@@ -436,9 +447,10 @@ export async function POST(request: NextRequest) {
 }
 ```
 
----
+<br/>
+<br/>
 
-## 📋 **ÉTAPE 7 : Page de liste des factures**
+# **ÉTAPE 7 : Page de liste des factures**
 
 ### 7.1 Créer le dossier invoices
 
@@ -584,9 +596,12 @@ export default async function InvoicesPage() {
 }
 ```
 
----
 
-## 📝 **ÉTAPE 8 : Formulaire de création de facture**
+
+<br/>
+<br/>
+
+# **ÉTAPE 8 : Formulaire de création de facture**
 
 ### 8.1 Créer le dossier new
 
@@ -799,9 +814,12 @@ export default function NewInvoicePage() {
 }
 ```
 
----
 
-## 🧪 **ÉTAPE 9 : Tests et débogage**
+
+<br/>
+<br/>
+
+# **ÉTAPE 9 : Tests et débogage**
 
 ### 9.1 Page de test API (src/app/test-api/page.tsx)
 
@@ -902,19 +920,21 @@ npm run dev
 npm run db:studio
 ```
 
----
 
-## 🚀 **ÉTAPE 10 : Finalisation et déploiement**
+<br/>
+<br/>
+
+# **ÉTAPE 10 : Finalisation et déploiement**
 
 ### 10.1 Vérification finale
 
 Checklist avant déploiement :
-- ✅ Toutes les pages se chargent correctement
-- ✅ La création de facture fonctionne
-- ✅ La liste des factures s'affiche
-- ✅ L'API répond correctement
-- ✅ La base de données est accessible
-- ✅ Pas d'erreurs dans la console
+- Toutes les pages se chargent correctement
+- La création de facture fonctionne
+- La liste des factures s'affiche
+- L'API répond correctement
+- La base de données est accessible
+- Pas d'erreurs dans la console
 
 ### 10.2 Build de production  
 
@@ -943,11 +963,13 @@ vercel
 # Ajouter : XATA_DATABASE_URL
 ```
 
----
 
-## 📋 **CHECKLIST DE VALIDATION**
+<br/>
+<br/>
 
-### ✅ **Fonctionnalités terminées :**
+# **CHECKLIST DE VALIDATION**
+
+###  **Fonctionnalités terminées :**
 - [ ] Initialisation Next.js 15 avec TypeScript
 - [ ] Configuration TailwindCSS
 - [ ] Installation shadcn/ui
@@ -964,19 +986,21 @@ vercel
 - [ ] Interface responsive
 - [ ] Tests API fonctionnels
 
-### 🎯 **Compétences acquises :**
-- ✅ **Next.js 15 App Router** : Server/Client Components, routing
-- ✅ **TypeScript** : Types stricts, inférence automatique
-- ✅ **TailwindCSS** : Design responsive et moderne
-- ✅ **Drizzle ORM** : Requêtes type-safe, migrations
-- ✅ **PostgreSQL** : Base de données relationnelle
-- ✅ **React Hook Form** : Formulaires et validation
-- ✅ **API REST** : Endpoints backend complets
-- ✅ **shadcn/ui** : Composants UI accessibles
+### **Compétences acquises :**
+- **Next.js 15 App Router** : Server/Client Components, routing
+- **TypeScript** : Types stricts, inférence automatique
+- **TailwindCSS** : Design responsive et moderne
+- **Drizzle ORM** : Requêtes type-safe, migrations
+- **PostgreSQL** : Base de données relationnelle
+- **React Hook Form** : Formulaires et validation
+- **API REST** : Endpoints backend complets
+- **shadcn/ui** : Composants UI accessibles
 
----
 
-## 🎓 **DÉFIS SUPPLÉMENTAIRES** (Bonus)
+<br/>
+<br/>
+
+# **DÉFIS SUPPLÉMENTAIRES** (Bonus)
 
 Une fois l'application de base terminée, essayez ces améliorations :
 
@@ -1008,7 +1032,7 @@ npm install next-themes
 - Toggle light/dark mode
 - Persistance des préférences
 
----
+
 
 **🎉 Félicitations ! Vous avez construit une application de facturation complète et moderne !**
 
