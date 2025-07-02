@@ -79,7 +79,7 @@ export default async function InvoicesPage() {
                       Total: {allInvoices.length} facture{allInvoices.length > 1 ? 's' : ''}
                     </h2>
                     <span className="text-sm text-gray-600">
-                      Montant total: {allInvoices.reduce((sum, inv) => sum + parseFloat(inv.value || '0'), 0).toFixed(2)} €
+                      Montant total: {allInvoices.reduce((sum, inv) => sum + parseFloat(inv.value || '0'), 0).toFixed(2)} $
                     </span>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export default async function InvoicesPage() {
                             {invoice.email}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
-                            {parseFloat(invoice.value || '0').toFixed(2)} €
+                            {parseFloat(invoice.value || '0').toFixed(2)} $
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${

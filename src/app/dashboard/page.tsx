@@ -108,7 +108,7 @@ export default async function DashboardPage() {
                       {/* Value */}
                       <div className="flex items-center justify-end">
                         <span className="text-sm font-semibold text-gray-900">
-                          {parseFloat(invoice.value || '0').toFixed(2)} €
+                          {parseFloat(invoice.value || '0').toFixed(2)} $
                         </span>
                         <button className="ml-2 text-gray-400 hover:text-gray-600">
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

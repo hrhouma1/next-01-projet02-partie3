@@ -424,7 +424,7 @@ export default function NewInvoicePage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="value">Montant (€) *</Label>
+              <Label htmlFor="value">Montant ($) *</Label>
               <Input
                 id="value"
                 type="number"
@@ -838,7 +838,7 @@ export default async function InvoicesPage() {
                       Total: {allInvoices.length} facture{allInvoices.length > 1 ? 's' : ''}
                     </h2>
                     <span className="text-sm text-gray-600">
-                      Montant total: {allInvoices.reduce((sum, inv) => sum + parseFloat(inv.value || '0'), 0).toFixed(2)} €
+                      Montant total: {allInvoices.reduce((sum, inv) => sum + parseFloat(inv.value || '0'), 0).toFixed(2)} $
                     </span>
                   </div>
                 </div>
@@ -880,7 +880,7 @@ export default async function InvoicesPage() {
                             {invoice.email}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
-                            {parseFloat(invoice.value || '0').toFixed(2)} €
+                            {parseFloat(invoice.value || '0').toFixed(2)} $
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
@@ -1113,7 +1113,7 @@ export default async function DashboardPage() {
                       {/* Value */}
                       <div className="flex items-center justify-end">
                         <span className="text-sm font-semibold text-gray-900">
-                          {parseFloat(invoice.value || '0').toFixed(2)} €
+                          {parseFloat(invoice.value || '0').toFixed(2)} $
                         </span>
                         <button className="ml-2 text-gray-400 hover:text-gray-600">
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
