@@ -2,9 +2,9 @@
 
 > **Objectif :** Créer de A à Z une application Next.js 15 moderne avec App Router, Drizzle ORM, TailwindCSS et React Hook Form
 
----
 
-## 📋 **PRÉREQUIS**
+
+# **PRÉREQUIS**
 
 Avant de commencer, assurez-vous d'avoir :
 - **Node.js 20+** installé (requis pour Next.js 15)
