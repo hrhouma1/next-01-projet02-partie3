@@ -13,6 +13,8 @@ Avant de commencer, assurez-vous d'avoir :
 - **VSCode** (recommandé) avec extensions TypeScript
 - **Compte Xata** (base de données PostgreSQL gratuite)
 
+<br/>
+<br/>
 
 
 # **ÉTAPE 1 : Initialisation du projet Next.js**
