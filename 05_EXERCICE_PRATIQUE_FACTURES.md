@@ -1,11 +1,11 @@
-# 📚 05_EXERCICE PRATIQUE : Application de Facturation Next.js
+#  05_EXERCICE PRATIQUE : Application de Facturation Next.js
 
-## 🎯 Objectif de l'exercice
+## Objectif de l'exercice
 Développer et comprendre une application de facturation moderne avec Next.js 15, TailwindCSS, Drizzle ORM et Xata PostgreSQL.
 
----
 
-## 📁 Structure du Projet
+
+# 5.1 - Structure du Projet
 
 Voici l'arbre de fichiers de notre application de facturation :
 
@@ -68,9 +68,11 @@ my-invoicing-app/
 └── 📄 tsconfig.json
 ```
 
----
+<br/>
+<br/>
 
-## ❓ QUESTION 1 : Analyse du Projet
+
+# 5-2.  QUESTION 1 : Analyse du Projet
 
 **Analysez la structure du projet ci-dessus et répondez aux questions suivantes :**
 
@@ -99,24 +101,23 @@ my-invoicing-app/
 
 10. **Quelle est la fonction du fichier `components.json` ?**
 
----
 
-## 📝 Instructions pour répondre
+## Instructions pour répondre
 
 - **Durée recommandée :** 15-20 minutes
 - **Format de réponse :** Rédigez vos réponses de manière claire et structurée
 - **Conseil :** N'hésitez pas à faire des recherches sur les technologies que vous ne connaissez pas
 - **Points bonus :** Identifiez d'autres éléments intéressants dans cette structure !
 
----
+<br/>
+<br/>
 
----
 
-## ❓ QUESTION 2 : Analyse du Code API
+# QUESTION 3 : Analyse du Code API
 
 **Maintenant, étudions le code de notre API REST. Voici le fichier `src/app/api/invoices/route.ts` avec des commentaires détaillés :**
 
-### 📄 Code commenté ligne par ligne
+###  Code commenté ligne par ligne
 
 ```typescript
 // ═══════════════════════════════════════════════════════════════════
@@ -308,9 +309,9 @@ export async function GET() {
 }
 ```
 
----
 
-### 📋 Questions sur l'analyse du code (20 points)
+
+###  Questions sur l'analyse du code (20 points)
 
 #### A) Architecture API (5 points)
 
@@ -352,9 +353,11 @@ export async function GET() {
     
     Quand utiliser l'une ou l'autre ?
 
----
 
-## ❓ QUESTION 3 : Analyse du Dashboard React
+<br/>
+<br/>
+
+# QUESTION 3 : Analyse du Dashboard React
 
 **Analysons maintenant le composant Dashboard qui affiche la liste des factures. Voici le fichier `src/app/dashboard/page.tsx` avec des commentaires très détaillés :**
 
@@ -734,9 +737,9 @@ export default async function DashboardPage() {
 }
 ```
 
----
 
-### 📋 Questions sur l'analyse du Dashboard (25 points)
+
+# Questions sur l'analyse du Dashboard (25 points)
 
 #### A) Architecture React et Next.js (6 points)
 
@@ -1239,7 +1242,7 @@ export default function NewInvoicePage() {
 }
 ```
 
----
+
 
 ### 📋 Questions sur le Formulaire React Hook Form (30 points)
 
@@ -1342,9 +1345,13 @@ export default function NewInvoicePage() {
     ```
     Quels éléments améliorent l'expérience utilisateur ?
 
----
 
-## ❓ QUESTION 5 : Comparaison Liste vs Création (/invoices vs /invoices/new)
+
+
+<br/>
+<br/>
+
+# QUESTION 5 : Comparaison Liste vs Création (/invoices vs /invoices/new)
 
 **Analysons maintenant les différences entre la page de liste des factures (`/invoices/page.tsx`) et la page de création (`/invoices/new/page.tsx`). Cette comparaison révèle les concepts clés de Next.js 15 App Router.**
 
@@ -1611,28 +1618,28 @@ export default async function InvoicesPage() {
 }
 ```
 
----
+
 
 ### 📊 Tableau comparatif détaillé
 
 | **Aspect** | **📄 /invoices/page.tsx** | **📄 /invoices/new/page.tsx** |
 |------------|---------------------------|-------------------------------|
-| **🏗️ Type de composant** | Server Component | Client Component (`'use client'`) |
-| **⚡ Exécution** | Côté serveur (build/render) | Côté navigateur |
-| **🔄 Fonction** | `async function` | `function` (pas async) |
-| **💾 Accès données** | `db.select()` direct | `fetch('/api/invoices')` |
-| **📊 États React** | Variables simples | `useState` multiples |
-| **🎯 Interactivité** | Aucune (statique) | Élevée (formulaire, événements) |
-| **🎨 Gradient** | Vert → Bleu | Bleu → Indigo |
-| **📏 Largeur max** | `max-w-6xl` (1152px) | `max-w-2xl` (672px) |
-| **🏷️ Titre** | `text-4xl` (36px) | `text-3xl` (30px) |
-| **📋 Structure** | `<table>` HTML | `<form>` + grille CSS |
-| **🔗 Navigation** | 2 boutons | 1 bouton |
-| **📈 Fonctionnalités** | Liste + Statistiques | Création + Validation |
-| **♿ Accessibilité** | Table sémantique | Labels + validation |
-| **📱 Responsive** | `overflow-x-auto` | Grid responsive |
+| ** Type de composant** | Server Component | Client Component (`'use client'`) |
+| ** Exécution** | Côté serveur (build/render) | Côté navigateur |
+| ** Fonction** | `async function` | `function` (pas async) |
+| ** Accès données** | `db.select()` direct | `fetch('/api/invoices')` |
+| ** États React** | Variables simples | `useState` multiples |
+| ** Interactivité** | Aucune (statique) | Élevée (formulaire, événements) |
+| ** Gradient** | Vert → Bleu | Bleu → Indigo |
+| ** Largeur max** | `max-w-6xl` (1152px) | `max-w-2xl` (672px) |
+| ** Titre** | `text-4xl` (36px) | `text-3xl` (30px) |
+| ** Structure** | `<table>` HTML | `<form>` + grille CSS |
+| ** Navigation** | 2 boutons | 1 bouton |
+| ** Fonctionnalités** | Liste + Statistiques | Création + Validation |
+| ** Accessibilité** | Table sémantique | Labels + validation |
+| ** Responsive** | `overflow-x-auto` | Grid responsive |
 
----
+
 
 ### 📋 Questions sur la Comparaison (20 points)
 
@@ -1695,7 +1702,7 @@ export default async function InvoicesPage() {
     - Comment Next.js gère-t-il le routing `/invoices` vs `/invoices/new` ?
     - Avantages du file-based routing ?
 
----
+
 
 ## 📋 **ANNEXE : Analyse Ultra-Détaillée de /invoices/page.tsx**
 
@@ -1755,11 +1762,11 @@ type Invoice = typeof invoices.$inferSelect;
 // }
 //
 // AVANTAGES :
-// ✅ Synchronisation automatique avec le schéma DB
-// ✅ Pas de duplication de code
-// ✅ Type-safety complet
-// ✅ Auto-completion dans l'IDE
-// ✅ Détection d'erreurs à la compilation
+// Synchronisation automatique avec le schéma DB
+// Pas de duplication de code
+// Type-safety complet
+// Auto-completion dans l'IDE
+// Détection d'erreurs à la compilation
 
 // ═══════════════════════════════════════════════════════════════════
 // COMPOSANT PRINCIPAL - SERVER COMPONENT NEXT.JS 15
@@ -1813,11 +1820,11 @@ export default async function InvoicesPage() {
     // SELECT * FROM invoices ORDER BY created_at ASC;
     // 
     // AVANTAGES DRIZZLE :
-    // ✅ Type-safety : erreur de compilation si colonne inexistante
-    // ✅ Auto-completion : IDE suggère les colonnes disponibles
-    // ✅ SQL optimisé : requête générée efficacement
-    // ✅ Protection injection : paramètres échappés automatiquement
-    // ✅ Performance : connexion réutilisée, mise en cache possible
+    // Type-safety : erreur de compilation si colonne inexistante
+    // Auto-completion : IDE suggère les colonnes disponibles
+    // SQL optimisé : requête générée efficacement
+    // Protection injection : paramètres échappés automatiquement
+    // Performance : connexion réutilisée, mise en cache possible
 
   } catch (e) {
     // ↑ GESTION D'ERREUR ROBUSTE
@@ -2651,9 +2658,12 @@ export default async function InvoicesPage() {
 */
 ```
 
----
 
-## 🧪 **QUESTION 6 - Page de Test API : /test-api/page.tsx (30 points)**
+<br/>
+<br/>
+
+
+# **QUESTION 6 - Page de Test API : /test-api/page.tsx (30 points)**
 
 **Cette page est un outil de développement pour tester notre API REST. Analysons-la ligne par ligne :**
 
@@ -2668,11 +2678,11 @@ export default async function InvoicesPage() {
 // ↑ DIRECTIVE NEXT.JS 15 OBLIGATOIRE
 // 
 // POURQUOI 'use client' ICI ?
-// ✅ Utilisation de useState (état React)
-// ✅ Gestion d'événements (onClick)
-// ✅ Appels fetch côté client
-// ✅ Interactivité avec boutons
-// ✅ Manipulation DOM en temps réel
+// Utilisation de useState (état React)
+// Gestion d'événements (onClick)
+// Appels fetch côté client
+// Interactivité avec boutons
+// Manipulation DOM en temps réel
 // 
 // DIFFÉRENCE AVEC SERVER COMPONENTS :
 // Server Component : Rendu côté serveur, pas d'interactivité
@@ -3298,9 +3308,12 @@ export default function TestApiPage() {
 
 **Total : 30 points**
 
----
 
-## 🏠 **QUESTION 7 - Fichiers Fondamentaux Next.js : /page.tsx et /layout.tsx (35 points)**
+
+<br/>
+<br/>
+
+# **QUESTION 7 - Fichiers Fondamentaux Next.js : /page.tsx et /layout.tsx (35 points)**
 
 **Ces deux fichiers constituent l'architecture de base de toute application Next.js 15. Analysons-les en profondeur :**
 
@@ -4098,9 +4111,12 @@ export default function Home() {
 
 **Total : 41 points**
 
----
 
-## 🗄️ **QUESTION 8 - Base de Données et Migrations Drizzle ORM (40 points)**
+
+<br/>
+<br/>
+
+# **QUESTION 8 - Base de Données et Migrations Drizzle ORM (40 points)**
 
 **Comprendre la gestion moderne de base de données avec Drizzle ORM, PostgreSQL et les migrations automatisées :**
 
@@ -4959,7 +4975,7 @@ git push origin feature/add-invoice-status
 
 **🎓 Cet exercice couvre maintenant TOUTE la stack moderne d'une application Next.js professionnelle avec gestion complète de base de données !**
 
----
+
 
 **Date de création :** `r new Date().toLocaleDateString('fr-FR')`  
 **Niveau :** Intermédiaire à Avancé  
