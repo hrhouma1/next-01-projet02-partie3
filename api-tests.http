@@ -1,0 +1,422 @@
+# 🧪 TESTS API - Application de Facturation Next.js 15
+# Fichier de tests HTTP pour VSCode REST Client
+# Installation : Installer l'extension "REST Client" dans VSCode
+# Usage : Cliquer sur "Send Request" au-dessus de chaque requête
+
+### Variables globales
+@baseUrl = http://localhost:3000
+@apiUrl = {{baseUrl}}/api/invoices
+
+# ═══════════════════════════════════════════════════════════════════
+# 📋 TESTS GET - RÉCUPÉRATION DES FACTURES
+# ═══════════════════════════════════════════════════════════════════
+
+### GET - Récupérer toutes les factures (liste vide initialement)
+GET {{apiUrl}}
+Accept: application/json
+
+### GET - Test avec en-têtes personnalisés
+GET {{apiUrl}}
+Accept: application/json
+User-Agent: Test-Client/1.0
+X-Test-Type: API-Testing
+
+# ═══════════════════════════════════════════════════════════════════
+# ✅ TESTS POST - CRÉATION DE FACTURES VALIDES
+# ═══════════════════════════════════════════════════════════════════
+
+### POST - Créer une facture simple et valide
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Entreprise ABC",
+  "email": "contact@entreprise-abc.com",
+  "value": "1500.00",
+  "description": "Développement site web e-commerce"
+}
+
+### POST - Créer une facture avec montant décimal
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Société XYZ",
+  "email": "admin@societe-xyz.fr",
+  "value": "2750.99",
+  "description": "Consulting technique et formation React"
+}
+
+### POST - Créer une facture sans description (optionnelle)
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "StartUp Innovation",
+  "email": "hello@startup-innovation.com",
+  "value": "850.50"
+}
+
+### POST - Créer une facture avec description longue
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Grande Corporation SARL",
+  "email": "facturation@grande-corporation.fr",
+  "value": "5000.00",
+  "description": "Audit complet de sécurité, mise en place d'une architecture microservices, formation équipe développement sur Next.js 15 et intégration CI/CD avec Docker et Kubernetes"
+}
+
+### POST - Facture avec montant minimal
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Micro Entreprise",
+  "email": "micro@example.com",
+  "value": "0.01"
+}
+
+### POST - Facture avec gros montant
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Mega Project Corp",
+  "email": "finance@megaproject.com",
+  "value": "50000.00",
+  "description": "Projet de transformation digitale complète"
+}
+
+# ═══════════════════════════════════════════════════════════════════
+# ❌ TESTS POST - VALIDATION DES ERREURS
+# ═══════════════════════════════════════════════════════════════════
+
+### POST - Erreur : Customer manquant
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "value": "100.00"
+}
+
+### POST - Erreur : Email manquant
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Customer",
+  "value": "100.00"
+}
+
+### POST - Erreur : Value manquant
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Customer",
+  "email": "test@example.com"
+}
+
+### POST - Erreur : Tous les champs manquants
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+}
+
+### POST - Erreur : Email invalide (format incorrect)
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Customer",
+  "email": "email-invalide",
+  "value": "100.00"
+}
+
+### POST - Erreur : Value comme string vide
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Customer", 
+  "email": "test@example.com",
+  "value": ""
+}
+
+### POST - Erreur : Value négative
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Customer",
+  "email": "test@example.com", 
+  "value": "-100.00"
+}
+
+# ═══════════════════════════════════════════════════════════════════
+# 🔍 TESTS AVANCÉS - CAS LIMITES
+# ═══════════════════════════════════════════════════════════════════
+
+### POST - Customer avec caractères spéciaux
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Société & Cie - L'Innovation (2024)",
+  "email": "contact@societe-innovation.com",
+  "value": "1200.00",
+  "description": "Projet avec caractères spéciaux : à, é, è, ç, ù, €, @, #"
+}
+
+### POST - Email avec domaine international
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "International Corp",
+  "email": "contact@société-français.fr",
+  "value": "2000.00"
+}
+
+### POST - Description avec emoji et caractères Unicode
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Modern Agency",
+  "email": "hello@modern-agency.com",
+  "value": "999.99",
+  "description": "🚀 Projet innovant avec émojis et caractères spéciaux : ñ, ü, ß, 中文, русский"
+}
+
+### POST - Customer nom très long (test limite 120 chars)
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Nom d'entreprise extrêmement long pour tester la limite de 120 caractères définie dans le schéma Drizzle ORM",
+  "email": "very-long-name@example.com",
+  "value": "500.00"
+}
+
+### POST - Email long (test limite 160 chars)  
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Long Email",
+  "email": "utilisateur-avec-nom-tres-long-pour-tester-les-limites@domaine-avec-nom-extremement-long-pour-validation.com",
+  "value": "300.00"
+}
+
+### POST - Description longue (test limite 255 chars)
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Description",
+  "email": "test@example.com", 
+  "value": "400.00",
+  "description": "Description très longue pour tester la limite de 255 caractères définie dans le schéma. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad."
+}
+
+# ═══════════════════════════════════════════════════════════════════
+# 🔧 TESTS TECHNIQUES - HEADERS ET FORMATS
+# ═══════════════════════════════════════════════════════════════════
+
+### POST - Test avec Content-Type incorrect
+POST {{apiUrl}}
+Content-Type: text/plain
+
+{
+  "customer": "Test Wrong Content-Type",
+  "email": "test@example.com",
+  "value": "100.00"
+}
+
+### POST - Test sans Content-Type
+POST {{apiUrl}}
+
+{
+  "customer": "Test No Content-Type",
+  "email": "test@example.com", 
+  "value": "100.00"
+}
+
+### POST - Test avec JSON malformé
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Malformed JSON"
+  "email": "test@example.com",
+  "value": "100.00"
+}
+
+### POST - Test avec propriétés supplémentaires (non validées)
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test Extra Props",
+  "email": "test@example.com",
+  "value": "100.00",
+  "description": "Test propriétés supplémentaires",
+  "extraField": "Cette propriété ne devrait pas être traitée",
+  "anotherField": 12345,
+  "booleanField": true
+}
+
+# ═══════════════════════════════════════════════════════════════════
+# 📊 TESTS EN SÉRIE - CRÉATION MULTIPLE
+# ═══════════════════════════════════════════════════════════════════
+
+### POST - Facture 1/5 - Série de tests
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Client Série 1",
+  "email": "client1@serie.com",
+  "value": "100.00",
+  "description": "Première facture de la série"
+}
+
+### POST - Facture 2/5 - Série de tests  
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Client Série 2", 
+  "email": "client2@serie.com",
+  "value": "200.00",
+  "description": "Deuxième facture de la série"
+}
+
+### POST - Facture 3/5 - Série de tests
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Client Série 3",
+  "email": "client3@serie.com",
+  "value": "300.00",
+  "description": "Troisième facture de la série"
+}
+
+### POST - Facture 4/5 - Série de tests
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Client Série 4",
+  "email": "client4@serie.com", 
+  "value": "400.00",
+  "description": "Quatrième facture de la série"
+}
+
+### POST - Facture 5/5 - Série de tests
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Client Série 5",
+  "email": "client5@serie.com",
+  "value": "500.00", 
+  "description": "Cinquième facture de la série"
+}
+
+### GET - Vérification après création en série
+GET {{apiUrl}}
+Accept: application/json
+
+# ═══════════════════════════════════════════════════════════════════
+# 🎯 TESTS DE PERFORMANCE - REQUÊTES SIMULTANÉES
+# ═══════════════════════════════════════════════════════════════════
+
+### GET - Test performance 1
+GET {{apiUrl}}
+
+### GET - Test performance 2  
+GET {{apiUrl}}
+
+### GET - Test performance 3
+GET {{apiUrl}}
+
+### GET - Test performance 4
+GET {{apiUrl}}
+
+### GET - Test performance 5
+GET {{apiUrl}}
+
+# ═══════════════════════════════════════════════════════════════════
+# 🔄 TESTS ENDPOINTS INEXISTANTS (404)
+# ═══════════════════════════════════════════════════════════════════
+
+### GET - Test route inexistante
+GET {{baseUrl}}/api/invoices/123
+
+### POST - Test route inexistante
+POST {{baseUrl}}/api/invoices/create
+Content-Type: application/json
+
+{
+  "customer": "Test 404",
+  "email": "test@example.com",
+  "value": "100.00"
+}
+
+### PUT - Méthode non supportée
+PUT {{apiUrl}}
+Content-Type: application/json
+
+{
+  "customer": "Test PUT", 
+  "email": "test@example.com",
+  "value": "100.00"
+}
+
+### DELETE - Méthode non supportée  
+DELETE {{apiUrl}}
+
+# ═══════════════════════════════════════════════════════════════════
+# 📝 NOTES ET DOCUMENTATION
+# ═══════════════════════════════════════════════════════════════════
+
+###
+# 🔍 COMMENT UTILISER CE FICHIER :
+# 
+# 1. Installer l'extension VSCode "REST Client" 
+# 2. Démarrer votre serveur Next.js : npm run dev
+# 3. Cliquer sur "Send Request" au-dessus de chaque requête
+# 4. Observer les réponses dans le panel de droite
+# 
+# 🎯 TESTS RECOMMANDÉS DANS L'ORDRE :
+# 
+# 1. GET initial (base vide)
+# 2. POST factures valides (plusieurs)  
+# 3. GET pour vérifier la création
+# 4. POST avec erreurs de validation
+# 5. Tests cas limites et caractères spéciaux
+# 6. Tests techniques (headers, JSON malformé)
+# 
+# 📊 CODES DE STATUT ATTENDUS :
+# 
+# - 200 : GET successful
+# - 201 : POST successful (création) 
+# - 400 : Erreurs de validation
+# - 404 : Routes inexistantes
+# - 405 : Méthodes non supportées
+# - 500 : Erreurs serveur
+# 
+# 🔧 DEBUGGING :
+# 
+# - Vérifiez la console serveur Next.js pour les logs détaillés
+# - Utilisez Drizzle Studio : npm run db:studio
+# - Inspectez les réponses JSON dans VSCode REST Client
+#
+# 🎉 HAPPY TESTING ! 
